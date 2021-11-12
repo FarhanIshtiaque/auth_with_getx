@@ -1,4 +1,5 @@
 import 'package:api_auth_demo/global/constant.dart';
+import 'package:api_auth_demo/modules/dashboard/view/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -73,7 +74,7 @@ class SignIn extends StatelessWidget {
                      CustomButton(
                        buttonName: 'Sign In',
                        onTap: (){
-                         Get.to(SignUp());
+                         Get.to(Dashboard());
                        },
                      ),
                     const SizedBox(
