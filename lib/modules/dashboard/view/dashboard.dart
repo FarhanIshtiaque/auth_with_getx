@@ -1,5 +1,6 @@
 import 'package:api_auth_demo/modules/authentication/view/component/custom_button.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/screen_tittle.dart';
+import 'package:api_auth_demo/modules/dashboard/view/profile_info.dart';
 import 'package:api_auth_demo/modules/dashboard/view/profile_update.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,9 +49,10 @@ class Dashboard extends StatelessWidget {
                         );
                       },
                       buttonName: "Profile Update"),
-                  SizedBox(height: 12,),
+                  const SizedBox(height: 12,),
                   CustomButton(
                       onTap: (){
+                        Get.to(ProfileInfo());
                       },
                       buttonName: "Profile Info"),
                 ],

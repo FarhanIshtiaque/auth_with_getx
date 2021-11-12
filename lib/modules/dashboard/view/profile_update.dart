@@ -5,6 +5,8 @@ import 'package:api_auth_demo/modules/authentication/view/component/text_field.d
 import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
 
+import 'component/user_header_info.dart';
+
 class ProfileUpdate extends StatelessWidget {
   const ProfileUpdate({Key? key}) : super(key: key);
 
@@ -12,7 +14,7 @@ class ProfileUpdate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('Profile',
+          title: const Text('Profile Update',
             style: TextStyle(
                 color: kGray4,
                 fontWeight: FontWeight.w500
@@ -37,59 +39,12 @@ class ProfileUpdate extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: 24,
+            
+            UserHeaderInfo(
+              name: 'johndoe',
+              email: 'johndoe@gmail.com',
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: [
 
-                  TextAvatar(
-                    shape: Shape.Circular,
-                    size: 64,
-                    backgroundColor: kGray7,
-                    textColor: Colors.white,
-                    fontSize: 22,
-                    fontWeight: FontWeight.w600,
-                    upperCase: true,
-                    numberLetters: 2,
-                    text: 'John Doe',
-                  ),
-                  Spacer(flex: 2,),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('John Doe',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: kGray2,
-                            fontSize: 22
-                        ),
-                      ),
-
-                      Text('johndoe@gmail.com',
-                        style: TextStyle(
-                            fontWeight: FontWeight.w500,
-                            color: kGray5,
-                            fontSize: 16
-                        ),
-                      ),
-
-                    ],
-                  ),
-                  Spacer(flex: 10,)
-
-                ],
-              ),
-            ),
-            const SizedBox(height: 34,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Container(height: 2, width: double.infinity,
-                color: kGray8,
-              ),
-            ),
             const SizedBox(height: 32,),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -126,3 +81,4 @@ class ProfileUpdate extends StatelessWidget {
     );
   }
 }
+

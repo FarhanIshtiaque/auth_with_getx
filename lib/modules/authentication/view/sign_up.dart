@@ -18,7 +18,7 @@ class SignUp extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children:   [
               const ScreenTittle(
-                tittle: 'Sign up to weDevs',
+                tittle: 'Create new account',
               ),
               const TextFieldTittle(
                 name: 'Username',

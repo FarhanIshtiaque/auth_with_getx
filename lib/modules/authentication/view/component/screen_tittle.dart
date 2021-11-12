@@ -19,7 +19,7 @@ class ScreenTittle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset('assets/weDevs.png',
-              height: 16,
+              height:28,
             ),
             const SizedBox(
               width: 8,

@@ -89,21 +89,28 @@ class SignIn extends StatelessWidget {
                       height: 108,
                     ),
                     Center(
-                      child: RichText(
-                        text: const TextSpan(
-                          text: 'Don\'t have an account?',
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              fontSize: 16,
-                              color: kGray3),
-                          children: <TextSpan>[
-                            TextSpan(
-                                text: ' Sign Up',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 16,
-                                    color: kPrimaryColor)),
-                          ],
+                      child: GestureDetector(
+                         onTap: (){
+                           Get.to(SignUp(),
+                             transition: Transition.rightToLeft
+                           );
+                         },
+                        child: RichText(
+                          text: const TextSpan(
+                            text: 'Don\'t have an account?',
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16,
+                                color: kGray3),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: ' Sign Up',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 16,
+                                      color: kPrimaryColor)),
+                            ],
+                          ),
                         ),
                       ),
                     )
