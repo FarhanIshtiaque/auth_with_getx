@@ -1,1 +1,1 @@
-const String apiBaseUrl ="https://apptest.dokandemo.com/wp-json";
+const String apiBaseUrl ="https://apptest.dokandemo.com";

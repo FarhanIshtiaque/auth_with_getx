@@ -75,22 +75,9 @@ class ProfileUpdate extends StatelessWidget {
                   const SizedBox(height: 32,),
                   CustomButton(onTap: (){
 
-                    state
-                        .updateProfile(
+                    state.updateProfile(
                         firstName: state.firstname.value,
-                        lastName: state.lastname.value)
-                        .then((data) {
-                      if (data != null) {
-                        Get.to(Dashboard());
-                        Get.snackbar("Attention!", "Profile Updated!",
-                            backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 2),
-                            icon: const Icon(Icons.check));
-                      } else {
-                        Get.snackbar("Attention!", "Profile Update Failed!",
-                            backgroundColor: Colors.redAccent,
-                            icon: Icon(Icons.warning));
-                      }
-                    });
+                        lastName: state.lastname.value);
 
                   }, buttonName: "Confirm"),
 
