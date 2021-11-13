@@ -16,6 +16,11 @@ class AuthState extends GetxController {
     update();
   }
 
+  RxBool onUpdate = false.obs;
+  isUpdated( bool value){
+    onUpdate.value= value;
+  }
+
   final password = ''.obs;
   final username = ''.obs;
   final email = ''.obs;
@@ -70,6 +75,8 @@ class AuthState extends GetxController {
   //**************************************************************//
   //**************************************************************//
 
+
+
   Future<AuthModel?> login(
       {required String username, required String password}) async {
     String path = apiBaseUrl + "/wp-json/jwt-auth/v1/token";
@@ -87,6 +94,7 @@ class AuthState extends GetxController {
 
         isLogin.value = true;
         return log;
+
       }
     } on Dio.DioError catch (ex) {
       print(ex.message);

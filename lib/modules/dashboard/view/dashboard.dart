@@ -1,3 +1,4 @@
+import 'package:api_auth_demo/global/constant.dart';
 import 'package:api_auth_demo/modules/authentication/state/auth_state.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/custom_button.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/screen_tittle.dart';
@@ -30,13 +31,23 @@ class Dashboard extends StatelessWidget {
               width: screenWidth * .8,
               repeat: false,
             ),
-            const Text(
-              'You are Signed In',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+             Center(
+               child:state.onUpdate.value== true? const Text(
+                 'Your Profile Updated',
+                 style: TextStyle(
+                   fontSize: 18,
+                   fontWeight: FontWeight.w600,
+                   color: kGray3,
+                 ),
+               ):const Text(
+                'You are Signed In',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: kGray3,
+                ),
             ),
+             ),
             const SizedBox(
               height: 24,
             ),
@@ -52,11 +63,15 @@ class Dashboard extends StatelessWidget {
                       },
                       buttonName: "Profile Update"),
                   const SizedBox(height: 12,),
-                  CustomButton(
-                      onTap: (){
-                        Get.to(ProfileInfo());
-                      },
-                      buttonName: "Profile Info"),
+                  Obx(
+                    ()=> Center(
+                      child: state.onUpdate.value== true?CustomButton(
+                          onTap: (){
+                            Get.to(ProfileInfo());
+                          },
+                          buttonName: "Profile Info"):Text(''),
+                    ),
+                  ),
                 ],
               ),
             )

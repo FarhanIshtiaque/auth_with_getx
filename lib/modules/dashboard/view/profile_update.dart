@@ -44,9 +44,9 @@ class ProfileUpdate extends StatelessWidget {
         child: Column(
           children: [
             
-            const UserHeaderInfo(
-              name: 'johndoe',
-              email: 'johndoe@gmail.com',
+             const UserHeaderInfo(
+              name: "User Name",
+              email: 'user@mail.com',
             ),
 
             const SizedBox(height: 32,),
@@ -81,7 +81,10 @@ class ProfileUpdate extends StatelessWidget {
                         firstName: state.firstname.value,
                         lastName: state.lastname.value);
 
+
+
                     if( result){
+                      state.isUpdated(true);
                       Get.to(Dashboard(),
                         transition: Transition.leftToRightWithFade,
 

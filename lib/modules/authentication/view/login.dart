@@ -30,7 +30,7 @@ class SignIn extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const TextFieldTittle(
-                      name: 'Email',
+                      name: 'Username',
                     ),
                     const SizedBox(
                       height: 16,
@@ -55,7 +55,7 @@ class SignIn extends StatelessWidget {
                     ),
                      TextFieldWidget(
                         hintText: 'Password',
-                        obscureText: false,
+                        obscureText: true,
                         suffixIconData: Icons.visibility,
                         onChanged: (value) {
                           state.setPassword(value);
@@ -82,7 +82,7 @@ class SignIn extends StatelessWidget {
                     CustomButton(
                       buttonName: 'Sign In',
                       onTap: () {
-                        Get.snackbar("Wait a minute!", "The API response in horribly slow!",
+                        Get.snackbar("Wait a minute!", "The API response in horribly slow :p",
                             backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 4),
                             icon: const Icon(Icons.check));
                         state
