@@ -18,8 +18,8 @@ class UserInfoTile extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
           Text(tileName,
-            style: TextStyle(
-                color: kGray5,
+            style: const TextStyle(
+                color: kGray2,
                 fontSize: 14,
                 fontWeight: FontWeight.w700),
           ),
@@ -33,12 +33,12 @@ class UserInfoTile extends StatelessWidget {
                 size: 24,
                 color: kGray5,
               ),
-              SizedBox(width: 6,),
+              const SizedBox(width: 6,),
               Text(info,
-                style: TextStyle(
-                    color: kGray2,
+                style: const TextStyle(
+                    color: kGray4,
                     fontSize: 18,
-                    fontWeight: FontWeight.w700),
+                    fontWeight: FontWeight.w600),
               ),
 
 

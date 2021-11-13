@@ -1,17 +1,21 @@
 import 'package:api_auth_demo/global/constant.dart';
+import 'package:api_auth_demo/modules/authentication/state/auth_state.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/custom_button.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/testfield_tittle.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/text_field.dart';
 import 'package:colorize_text_avatar/colorize_text_avatar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'component/user_header_info.dart';
+import 'dashboard.dart';
 
 class ProfileUpdate extends StatelessWidget {
   const ProfileUpdate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final AuthState state = Get.find();
     return Scaffold(
       appBar: AppBar(
           title: const Text('Profile Update',
@@ -40,7 +44,7 @@ class ProfileUpdate extends StatelessWidget {
         child: Column(
           children: [
             
-            UserHeaderInfo(
+            const UserHeaderInfo(
               name: 'johndoe',
               email: 'johndoe@gmail.com',
             ),
@@ -56,16 +60,37 @@ class ProfileUpdate extends StatelessWidget {
                   TextFieldWidget(hintText: 'first name',
                       suffixIconData: Icons.person_outline_outlined,
                       obscureText: false,
-                    onChanged: (value) {},),
+                    onChanged: (value) {
+                    state.setFirstName(value);
+                    },),
                   const SizedBox(height: 24,),
                   const TextFieldTittle(name: 'Last Name'),
                   const SizedBox(height: 8,),
                   TextFieldWidget(hintText: 'last name',
                     suffixIconData: Icons.person_outline_outlined,
                     obscureText: false,
-                    onChanged: (value) {},),
+                    onChanged: (value) {
+                    state.setLastName(value);
+                    },),
                   const SizedBox(height: 32,),
                   CustomButton(onTap: (){
+
+                    state
+                        .updateProfile(
+                        firstName: state.firstname.value,
+                        lastName: state.lastname.value)
+                        .then((data) {
+                      if (data != null) {
+                        Get.to(Dashboard());
+                        Get.snackbar("Attention!", "Profile Updated!",
+                            backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 2),
+                            icon: const Icon(Icons.check));
+                      } else {
+                        Get.snackbar("Attention!", "Profile Update Failed!",
+                            backgroundColor: Colors.redAccent,
+                            icon: Icon(Icons.warning));
+                      }
+                    });
 
                   }, buttonName: "Confirm"),
 

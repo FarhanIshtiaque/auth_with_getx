@@ -1,5 +1,6 @@
 import 'package:api_auth_demo/global/constant.dart';
-import 'package:api_auth_demo/modules/authentication/state/sign_in_state.dart';
+import 'package:api_auth_demo/modules/authentication/state/auth_state.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +20,7 @@ class TextFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = Get.put(SignInState());
+    final state = Get.put(AuthState());
 
     return TextField(
       onChanged: onChanged,
