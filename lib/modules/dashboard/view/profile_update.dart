@@ -73,11 +73,28 @@ class ProfileUpdate extends StatelessWidget {
                     state.setLastName(value);
                     },),
                   const SizedBox(height: 32,),
-                  CustomButton(onTap: (){
-
-                    state.updateProfile(
+                  CustomButton(onTap: ()async{
+                    Get.snackbar("Wait a minute!", "The API response in horribly slow!",
+                        backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 4),
+                        icon: const Icon(Icons.check));
+                    bool result=  await   state.updateProfile(
                         firstName: state.firstname.value,
                         lastName: state.lastname.value);
+
+                    if( result){
+                      Get.to(Dashboard(),
+                        transition: Transition.leftToRightWithFade,
+
+                      );
+                      Get.snackbar("Congratulation!", "Your Profile is updated!",
+                          backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 2),
+                          icon: const Icon(Icons.check));
+                    }
+                    else {
+                      Get.snackbar("Bad Luck!", "Time out",
+                          backgroundColor: kRed,duration: const Duration( seconds: 3),
+                          icon: const Icon(Icons.check));
+                    }
 
                   }, buttonName: "Confirm"),
 

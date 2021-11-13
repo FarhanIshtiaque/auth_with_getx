@@ -1,5 +1,7 @@
 import 'package:api_auth_demo/global/url.dart';
 import 'package:api_auth_demo/modules/authentication/model/AuthModel.dart';
+import 'package:api_auth_demo/modules/authentication/model/user_model.dart';
+import 'package:api_auth_demo/modules/dashboard/model/user_info_model.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart' as Dio;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -97,7 +99,7 @@ class AuthState extends GetxController {
 //***************        UPDATE PROFILE             ************//
 //**************************************************************//
 //**************************************************************//
-
+  UserInfoModel? userInfo ;
   final firstname = ''.obs;
   final lastname = ''.obs;
 
@@ -111,16 +113,11 @@ class AuthState extends GetxController {
     update();
   }
 
-  Future updateProfile(
+  Future<bool> updateProfile(
       {required String firstName, required String lastName}) async {
     Map updateUser = {'first_name': '', 'last_name': ''};
     updateUser["first_name"]=firstName;
     updateUser["last_name"]=lastName;
-
-
-    print(updateUser);
-    print(token);
-
 
     try {
       Dio.Dio dio = Dio.Dio();
@@ -132,10 +129,20 @@ class AuthState extends GetxController {
           data: updateUser);
 
       print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        var responseJson = response.data;
+        UserInfoModel log = UserInfoModel.fromJson(responseJson);
+        userInfo = log;
+        return true;
+
+      }
     } on Dio.DioError catch (ex) {
       print(ex.message);
-      return null;
+      return false;
     }
+    return false;
+
   }
 
 //**************************************************************//
@@ -170,4 +177,43 @@ class AuthState extends GetxController {
     }
     return false;
   }
+
+
+
+  // Future<UserInfoModel?> fetchProfileInfo() async {
+  //
+  //   try {
+  //     Dio.Dio dio = Dio.Dio();
+  //     dio.options.headers['content-Type'] = 'application/json';
+  //     dio.options.headers['Authorization'] = token;
+  //
+  //     Dio.Response response = await dio.get(
+  //         "https://apptest.dokandemo.com/wp-json/wp/v2/users/me");
+  //
+  //     print(response.statusCode);
+  //
+  //     if (response.statusCode == 200) {
+  //       var responseJson = response.data;
+  //       UserInfoModel log = UserInfoModel.fromJson(responseJson);
+  //       userInfo= log;
+  //
+  //       print(userInfo);
+  //
+  //       return log;
+  //
+  //     }
+  //   } on Dio.DioError catch (ex) {
+  //     print(ex.message);
+  //     return null;
+  //   }
+  // }
+
+
+
 }
+
+
+
+
+
+

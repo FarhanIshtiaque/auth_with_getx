@@ -1,3 +1,4 @@
+import 'package:api_auth_demo/global/constant.dart';
 import 'package:api_auth_demo/modules/authentication/state/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -81,6 +82,9 @@ class SignUp extends StatelessWidget {
               CustomButton(
                 buttonName: 'Sign Up',
                 onTap: () async{
+                  Get.snackbar("Wait a minute!", "The API response in horribly slow!",
+                      backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 4),
+                      icon: const Icon(Icons.check));
 
                bool result=  await state
                       .registerUser(
@@ -89,8 +93,19 @@ class SignUp extends StatelessWidget {
                       email: state.email.value);
 
                if(result){
-                 print('Successful');
+                 Get.to(SignIn(),
+                   transition: Transition.leftToRightWithFade
+                 );
+                 Get.snackbar("Attention!", "Login Success!",
+                     backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 2),
+                     icon: const Icon(Icons.check));
 
+               }
+
+               else{
+                 Get.snackbar("Bad Luck!", "Time out or you already have a account with this email",
+                     backgroundColor: kRed,duration: const Duration( seconds: 3),
+                     icon: const Icon(Icons.check));
                }
 
 

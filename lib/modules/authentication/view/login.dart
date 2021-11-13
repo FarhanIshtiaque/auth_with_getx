@@ -82,6 +82,9 @@ class SignIn extends StatelessWidget {
                     CustomButton(
                       buttonName: 'Sign In',
                       onTap: () {
+                        Get.snackbar("Wait a minute!", "The API response in horribly slow!",
+                            backgroundColor: Colors.greenAccent,duration: const Duration( seconds: 4),
+                            icon: const Icon(Icons.check));
                         state
                             .login(
                                 username: state.username.value,

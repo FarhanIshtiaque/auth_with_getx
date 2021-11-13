@@ -1,3 +1,4 @@
+import 'package:api_auth_demo/modules/authentication/state/auth_state.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/custom_button.dart';
 import 'package:api_auth_demo/modules/authentication/view/component/screen_tittle.dart';
 import 'package:api_auth_demo/modules/dashboard/view/profile_info.dart';
@@ -11,6 +12,7 @@ class Dashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthState state = Get.find();
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
